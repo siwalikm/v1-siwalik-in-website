@@ -1,20 +1,3 @@
-/*
- ADOBE CONFIDENTIAL
- ___________________
-
- Copyright 2011 Adobe Systems Incorporated
- All Rights Reserved.
-
- NOTICE:  All information contained herein is, and remains
- the property of Adobe Systems Incorporated and its suppliers,
- if any.  The intellectual and technical concepts contained
- herein are proprietary to Adobe Systems Incorporated and its
- suppliers and may be covered by U.S. and Foreign Patents,
- patents in process, and are protected by trade secret or copyright law.
- Dissemination of this information or reproduction of this material
- is strictly forbidden unless prior written permission is obtained
- from Adobe Systems Incorporated.
-*/
 (function(a){a.fn.museMenu=function(){return this.each(function(){var b=a(this),c="absolute",d,f,g,l,h,i;if(b.css("position")=="fixed"){c="fixed";i=b;var j=Muse.Utils.getStyleSheetRuleById(Muse.Utils.getPageStyleSheet(),this.id);d=j?Muse.Utils.getRuleProperty(j,"top"):b.css("top");f=j?Muse.Utils.getRuleProperty(j,"left"):b.css("left");g=j?Muse.Utils.getRuleProperty(j,"right"):b.css("right");l=j?Muse.Utils.getRuleProperty(j,"bottom"):b.css("bottom");h=parseInt(b.css("margin-left"))}else for(j=b.parent();j.length>
 0&&j.attr("id")!="page";){if(j.css("position")=="fixed"){c="fixed";i=j;var k=j.offset(),m=b.offset(),o=Muse.Utils.getStyleSheetRuleById(Muse.Utils.getPageStyleSheet(),j.attr("id")),q=o?Muse.Utils.getRuleProperty(o,"top"):j.css("top"),p=o?Muse.Utils.getRuleProperty(o,"left"):j.css("left"),n=o?Muse.Utils.getRuleProperty(o,"right"):j.css("right"),o=o?Muse.Utils.getRuleProperty(o,"bottom"):j.css("bottom");d=q&&q!="auto"?parseInt(q)+(m.top-k.top):q;f=p&&p!="auto"&&p.indexOf("%")==-1?parseInt(p)+(m.left-
 k.left):p;g=n&&n!="auto"&&n.indexOf("%")==-1?parseInt(n)+(k.left+j.width())-(m.left+b.width()):n;l=o&&o!="auto"?parseInt(o)+(k.top+j.height())-(m.top+b.height()):o;h=parseInt(j.css("margin-left"))+(p&&p.indexOf("%")!=-1?m.left-k.left:0);break}j=j.parent()}var s=a(),t=!1,v=b.find(".MenuItemContainer"),j=b.find(".MenuItem"),k=b.find(".SubMenu").add(j),w;k.on("mouseover",function(){t=!0});k.on("mouseleave",function(){t=!1;setTimeout(function(){t===!1&&(v.each(function(){a(this).data("hideSubmenu")()}),

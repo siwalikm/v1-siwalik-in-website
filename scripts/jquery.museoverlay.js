@@ -1,20 +1,3 @@
-/*
- ADOBE CONFIDENTIAL
- ___________________
-
- Copyright 2011 Adobe Systems Incorporated
- All Rights Reserved.
-
- NOTICE:  All information contained herein is, and remains
- the property of Adobe Systems Incorporated and its suppliers,
- if any.  The intellectual and technical concepts contained
- herein are proprietary to Adobe Systems Incorporated and its
- suppliers and may be covered by U.S. and Foreign Patents,
- patents in process, and are protected by trade secret or copyright law.
- Dissemination of this information or reproduction of this material
- is strictly forbidden unless prior written permission is obtained
- from Adobe Systems Incorporated.
-*/
 (function(a){a.fn.museOverlay=function(b){var c=a.extend({autoOpen:!0,offsetLeft:0,offsetTop:0,$overlaySlice:a(),$overlayWedge:a(),duration:300,overlayExtraWidth:0,overlayExtraHeight:0,$elasticContent:a()},b);return this.each(function(){var d=a(this).data("museOverlay");if(d&&d[b]!==void 0)return d[b].apply(this,Array.prototype.slice.call(arguments,1));var f=a("<div></div>").appendTo("body").css({position:"absolute",top:0,left:0,zIndex:100001}).hide(),g=a("<div></div>").append(c.$overlaySlice).appendTo(f).css({position:"absolute",
 top:0,left:0}),j=a(this).css({position:"absolute",left:0,top:0}).appendTo(f),h=a(window),l=h.data("scrollWrapper"),k,i,n=null,o=c.$elasticContent,p=o.length?parseInt(o.css("padding-left"))+parseInt(o.css("padding-right"))+parseInt(o.css("border-left-width"))+parseInt(o.css("border-right-width")):0,q=o.length?parseInt(o.css("padding-top"))+parseInt(o.css("padding-bottom"))+parseInt(o.css("border-top-width"))+parseInt(o.css("border-bottom-width")):0,m={isOpen:!1,open:function(){if(!m.isOpen)k=h.width(),
 i=h.height(),m.positionContent(k,i),f.show(),g.bind("click",m.close),g.css({opacity:0}).stop(!0),j.css({opacity:0}).stop(!0),g.bind("click",m.close).animate({opacity:0.99},{queue:!1,duration:c.duration,complete:function(){g.css({opacity:""});j.animate({opacity:1},{queue:!1,duration:c.duration,complete:function(){j.css({opacity:""});m.applyPageDimensions()}})}}),a(document).bind("keydown",m.onKeyDown),m.doLayout(k,i),m.isOpen=!0,h.bind("resize",m.onWindowResize)},close:function(){g.unbind("click",
